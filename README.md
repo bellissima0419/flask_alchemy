@@ -3,8 +3,10 @@ Climate Analysis with Sql Flask Pandas and Matplotlib
 
 
 <div>
-  <img src="https://i.giphy.com/1k4bpNvy5RfcQ.gif">
-  <!-- <img src="./images/matpy.png" width="400" display="inline"> -->
+  <!-- <img src="https://i.giphy.com/1k4bpNvy5RfcQ.gif"> -->
+  <!-- <img src="./images/alchemy.gif" width="400" display="inline"> -->
+  <img src="./images/alchemy.gif">
+
 <div>
 
 ### Notebook viewer:
