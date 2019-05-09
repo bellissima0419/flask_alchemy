@@ -3,7 +3,7 @@ Climate Analysis with Sql Flask Pandas and Matplotlib
 
 
 <div>
-  <img src="https://i.giphy.com/media/1k4bpNvy5RfcQ/giphy.webp">
+  <img src="https://i.giphy.com/1k4bpNvy5RfcQ.gif">
   <!-- <img src="./images/matpy.png" width="400" display="inline"> -->
 <div>
 
@@ -13,3 +13,5 @@ Climate Analysis with Sql Flask Pandas and Matplotlib
 
 
 <!-- https://i.giphy.com/media/1k4bpNvy5RfcQ/giphy.webp -->
+
+<!-- https://i.giphy.com/1k4bpNvy5RfcQ.gif -->
