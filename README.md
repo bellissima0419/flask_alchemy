@@ -2,11 +2,14 @@
 Climate Analysis with Sql Flask Pandas and Matplotlib
 
 
-<!-- <div>
-  <img src="./images/pyber.png" width="400" display="inline">
-  <img src="./images/matpy.png" width="400" display="inline">
-<div> -->
+<div>
+  <img src="https://i.giphy.com/media/1k4bpNvy5RfcQ/giphy.webp">
+  <!-- <img src="./images/matpy.png" width="400" display="inline"> -->
+<div>
 
 ### Notebook viewer:
 [View my Noteboook Here](https://nbviewer.jupyter.org/github/bellissima0419/flask_alchemy/blob/master/climate.ipynb
 )
+
+
+<!-- https://i.giphy.com/media/1k4bpNvy5RfcQ/giphy.webp -->
