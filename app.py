@@ -64,7 +64,7 @@ def precipitation():
 
 @app.route("/api/v1.0/stations")
 def stations():
-    """Return  dictionary of date and prcp JSON format"""
+    """JSON list of stations"""
 
     results = session.query(Measurement.station)\
     .group_by(Measurement.station).all()
@@ -83,6 +83,7 @@ def tobs():
     results = session.query(Measurement.station,Measurement.tobs)\
     .filter(Measurement.date >= start_year).all()
 
+
     tobs_list = []
     for station, tob in results:
         tobs_dict = {}
@@ -91,6 +92,17 @@ def tobs():
         tobs_list.append(tobs_dict)
 
     return jsonify(tobs_list)
+
+@app.route("/api/v1.0/<start>")
+def start():
+    """Return  dictionary of date and prcp JSON format"""
+
+    results = session.query(Passenger.name).all()
+
+    # Convert list of tuples into normal list
+    all_names = list(np.ravel(results))
+
+    return jsonify(all_names)
 
 
 
