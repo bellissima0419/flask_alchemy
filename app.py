@@ -93,16 +93,27 @@ def tobs():
 
     return jsonify(tobs_list)
 
-@app.route("/api/v1.0/<start>")
-def start():
-    """Return  dictionary of date and prcp JSON format"""
 
-    results = session.query(Passenger.name).all()
+@app.route("/api/v1.0/start/<start>")
+def start(start):
+    """Temp_MIN, Temp_AVG, and Temp_MAX for all dates greater than and equal to the start parameter."""
 
-    # Convert list of tuples into normal list
-    all_names = list(np.ravel(results))
+    results = session.query(Measurement.date, func.min(Measurement.tobs),
+        func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+        filter(Measurement.date >= start).group_by(Measurement.date).all()
 
-    return jsonify(all_names)
+    temp_stats = []
+
+    for date, tmin, tavg, tmax in results:
+        temps_dict = {}
+        temps_dict["date"] = date
+        temps_dict["tmin"] = tmin
+        temps_dict["tavg"] = tavg
+        temps_dict["tmax"] = tmax
+
+        temp_stats.append(temps_dict)
+
+    return jsonify(temp_stats)
 
 
 
