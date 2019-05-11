@@ -63,5 +63,19 @@ def precipitation():
 
     return jsonify(results_list)
 
+
+@app.route("/api/v1.0/stations")
+def stations():
+    """Return  dictionary of date and prcp JSON format"""
+
+    results = session.query(Measurement.station)\
+    .group_by(Measurement.station).all()
+
+    results_list = list(np.ravel(results))
+
+    return jsonify(results_list)
+
+
+
 if __name__ == "__main__":
     app.run(host= "localhost", port=5000, debug=True)
