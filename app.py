@@ -43,8 +43,7 @@ def welcome():
 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
-    """Convert the query results to a Dictionary using date as the key and prcp as the value.
-       Return the JSON representation of your dictionary."""
+    """Precipitation by Date: list of  dictionaries"""
 
     latest_year = session.query(Measurement.date).order_by(Measurement.date.desc()).first()[0]
     start_year = dt.datetime.strptime(latest_year, "%Y-%m-%d") - dt.timedelta(days = 365)
@@ -76,7 +75,7 @@ def stations():
 
 @app.route("/api/v1.0/tobs")
 def tobs():
-    """Return a JSON list of Temperature Observations (tobs) for the previous year."""
+    """dates and temperature observations from a year from the last data point."""
 
     latest_year = session.query(Measurement.date).order_by(Measurement.date.desc()).first()[0]
     start_year = dt.datetime.strptime(latest_year, "%Y-%m-%d") - dt.timedelta(days = 365)
