@@ -50,18 +50,17 @@ def precipitation():
     start_year = dt.datetime.strptime(latest_year, "%Y-%m-%d") - dt.timedelta(days = 365)
 
     results = session.query(Measurement.date, Measurement.prcp).filter(Measurement.date >= start_year).all()
-    print(f"="*50)
     print(f"len(results): {len(results)}")
     print(f"type(results): {type(results)}")
 
-    results_list = []
+    date_prcp = []
     for date, prcp in results:
         precip_dict = {}
         precip_dict["date"] = date
         precip_dict["prcp"] = prcp
-        results_list.append(precip_dict)
+        date_prcp.append(precip_dict)
 
-    return jsonify(results_list)
+    return jsonify(date_prcp)
 
 
 @app.route("/api/v1.0/stations")
@@ -74,6 +73,25 @@ def stations():
     results_list = list(np.ravel(results))
 
     return jsonify(results_list)
+
+@app.route("/api/v1.0/tobs")
+def tobs():
+    """Return a JSON list of Temperature Observations (tobs) for the previous year."""
+
+    latest_year = session.query(Measurement.date).order_by(Measurement.date.desc()).first()[0]
+    start_year = dt.datetime.strptime(latest_year, "%Y-%m-%d") - dt.timedelta(days = 365)
+
+    results = session.query(Measurement.station,Measurement.tobs)\
+    .filter(Measurement.date >= start_year).all()
+
+    tobs_list = []
+    for station, tob in results:
+        tobs_dict = {}
+        tobs_dict["station"] = station
+        tobs_dict["tob"] = tob
+        tobs_list.append(tobs_dict)
+
+    return jsonify(tobs_list)
 
 
 
